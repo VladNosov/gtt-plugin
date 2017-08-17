@@ -1,0 +1,82 @@
+<idea-plugin version="2">
+  <id>gherkin.to.testrail.converter</id>
+  <name>GherkinToTestRail</name>
+  <version>1.0</version>
+
+  <description><![CDATA[
+      Cjnverter gherkin scenario to testRail case.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="util.GtTSettings"
+                        serviceImplementation="util.GtTSettings"/>
+    <applicationConfigurable id="settings.GtTSettingsConfigurable"
+                             groupId="tools"
+                             displayName="GtT"
+                             instance="ui.settings.GtTSettingsConfigurable"/>
+  </extensions>
+
+  <project-components>
+    <component>
+      <implementation-class>GtTProcessesManager</implementation-class>
+    </component>
+  </project-components>
+
+  <actions>
+    <action id="GtT.ExpandAll"
+            class="project.actions.ExpandAllAction"
+            text="Expand All"
+            icon="AllIcons.Actions.Expandall"/>
+
+    <action id="GtT.CollapseAll"
+            class="project.actions.CollapseAllAction"
+            text="Collapse All"
+            icon="AllIcons.Actions.Collapseall"/>
+
+    <action id="GtT.EditSettingAction"
+            class="project.actions.EditSettingAction"
+            text="GtT settings"
+            description="Gherkin to TestRail case settings"
+            icon="AllIcons.General.ProjectSettings"/>
+
+    <action id="GtT.FindCaseAction"
+            class="project.actions.FindCaseActions"
+            text="FindCase"
+            description="Find case"/>
+
+    <action id="GtT.Refresh"
+            class="project.actions.RefreshCasesAction"
+            use-shortcut-of="Refresh"/>
+
+    <action id="GtT.ParseToGherkin"
+            class="project.actions.ParseToGherkinAction"
+            text="Parse to gherkin"/>
+
+    <group id="GtT.ProcessesToolbar">
+      <reference id="GtT.ExpandAll"/>
+      <reference id="GtT.CollapseAll"/>
+      <separator/>
+      <reference id="GtT.EditSettingAction"/>
+      <separator/>
+      <reference id="GtT.FindCaseAction"/>
+      <separator/>
+      <reference id="GtT.Refresh"/>
+    </group>
+  </actions>
+</idea-plugin>

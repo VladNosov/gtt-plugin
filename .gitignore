@@ -1,0 +1,19 @@
+target/
+*.iml
+.idea/
+build/
+
+# игнорируем каталоги для загрузки feature файлов и замены в них
+replace_workspace/*
+!replace_workspace/replacer.txt
+
+from_testrail/*
+!from_testrail/.gitignore
+
+src/test/resources/features/*
+!src/test/resources/features/.gitignore
+
+# если вдруг кто надумает работать в eclipse
+.classpath
+.project
+.settings/
